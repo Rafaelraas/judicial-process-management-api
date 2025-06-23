@@ -14,7 +14,8 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .servers(List.of(
-                        new Server().url("https://reimagined-space-barnacle-7vppxr9qxg5cwx7-8080.app.github.dev").description("GitHub Codespace")
+                        new Server().url("https://reimagined-space-barnacle-7vppxr9qxg5cwx7-8080.app.github.dev").description("GitHub Codespace"),
+                        new Server().url("http://localhost:8080").description("Local Development Server")
                 ));
     }
 }
