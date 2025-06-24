@@ -19,6 +19,9 @@ public class Processo {
     private String comarca;
     private String assunto;
 
+    private String nomeReclamante;
+    private String nomeReclamado;
+
     @Enumerated(EnumType.STRING)
     private Status status;
 
@@ -65,6 +68,22 @@ public class Processo {
 
     public void setAssunto(String assunto) {
         this.assunto = assunto;
+    }
+
+    public String getNomeReclamante() {
+        return nomeReclamante;
+    }
+
+    public void setNomeReclamante(String nomeReclamante) {
+        this.nomeReclamante = nomeReclamante;
+    }
+
+    public String getNomeReclamado() {
+        return nomeReclamado;
+    }
+
+    public void setNomeReclamado(String nomeReclamado) {
+        this.nomeReclamado = nomeReclamado;
     }
 
     public Status getStatus() {
