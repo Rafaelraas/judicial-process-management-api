@@ -97,3 +97,63 @@ Para executar os testes automatizados do projeto, execute o seguinte comando no 
 ```bash
 mvn test
 ```
+
+## Exemplos de Requisições (cURL)
+
+Aqui estão alguns exemplos de como interagir com a API usando cURL.
+
+**1. Obter o Token de Autenticação**
+
+Primeiro, obtenha um token JWT para autenticar suas requisições.
+
+```bash
+curl -X POST http://localhost:8080/api/v1/auth/login \
+-H "Content-Type: application/json" \
+-d '{
+    "username": "user",
+    "password": "password"
+}'
+```
+
+**Resposta Esperada:**
+
+```json
+{
+    "jwt": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzE5MjM4ODk5LCJpYXQiOjE3MTkyMDI4OTl9.example_token"
+}
+```
+
+**2. Listar Todos os Processos**
+
+Use o token obtido no cabeçalho `Authorization` para listar todos os processos. Substitua `SEU_TOKEN_AQUI` pelo token real.
+
+```bash
+curl -X GET http://localhost:8080/api/v1/processos \
+-H "Authorization: Bearer SEU_TOKEN_AQUI"
+```
+
+**3. Criar um Novo Processo**
+
+```bash
+curl -X POST http://localhost:8080/api/v1/processos \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer SEU_TOKEN_AQUI" \
+-d '{
+    "numeroProcesso": "0000006-06.2025.1.01.0001",
+    "comarca": "Comarca Sul",
+    "vara": "3ª Vara Cível",
+    "status": "ATIVO",
+    "nomeReclamante": "Nova Reclamante",
+    "nomeReclamado": "Empresa de Teste S.A.",
+    "dataDistribuicao": "2025-06-24"
+}'
+```
+
+**4. Consultar a Agenda de Audiências**
+
+Consulte a agenda para uma comarca e um dia específicos.
+
+```bash
+curl -X GET "http://localhost:8080/api/v1/agenda?comarca=Comarca%20Central&dia=2025-06-26" \
+-H "Authorization: Bearer SEU_TOKEN_AQUI"
+```
